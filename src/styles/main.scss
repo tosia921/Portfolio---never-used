@@ -41,10 +41,42 @@ table {
 	border-spacing: 0;
 }
 
+////////////////////////////// MIXINS /////////////////////////////////////
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) { @content };    //600px
+    }
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width: 56.25em) { @content };     //900px
+    }
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width: 75em) { @content };    //1200px
+    }
+    // @if $breakpoint == big-desktop {
+    //     @media only screen and (min-width: 112.5em) { @content };    //1800
+    // }
+}
+
+///////////////////////// RESPONSIVE FONT SIZE //////////////////////////////////
+
 html {
     // This defines what 1rem is
-    font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+	font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+	
+	@include respond(tab-land) { // width < 1200?
+        font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+    }
+
+    @include respond(tab-port) { // width < 900?
+        font-size: 50%; //1 rem = 8px, 8/16 = 50%
+    }
+    
+    @include respond(big-desktop) {
+        font-size: 75%; //1rem = 12, 12/16
+    }
 }
+
 
 body {
 	box-sizing: border-box;
@@ -52,8 +84,6 @@ body {
 	font-weight: 400;
     line-height: 1.7;
 }
-
-
 
 
 
@@ -68,9 +98,16 @@ $color-light-gray: #fbfbfb;
 $color-text-light-gray: rgb(138, 143,163);
 $color-text-light-black: rgb(51, 51, 51);
 
-$text-shadow-1: 0px 1px 2px rgba(0,0,0,0.4);
+$text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 
-///////////////
+/////////////////////////////// BUTTON //////////////////////////////////
+
+.btn {
+	background-color: white;
+	border: solid 1px black;
+	padding: 1rem 2rem;
+	border-radius: 100px;
+}
 
 /////////////////////////////// LANDING PAGE //////////////////////////////////
 
@@ -85,73 +122,188 @@ $text-shadow-1: 0px 1px 2px rgba(0,0,0,0.4);
 	justify-content: space-between;
 
 	z-index: 100;
-	padding-left: 20rem;
-	padding-right: 20rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
 	background-color: $color-light-gray;
 	&__logo {
 		&--text {
 			font-family: $logo-font;
 			font-weight: 800;
 			text-transform: uppercase;
-			font-size: 3rem;
+			font-size: 3.5rem;
 			word-spacing: 10px;
 			color: $color-green;
 			letter-spacing: 1px;
-			text-shadow: $text-shadow-1;
+			text-shadow: $text-shadow-logo;
 		}
 		
 	}
+
+	
 
 	&__nav {
 		
 		&__list {
 			list-style-type: none;
 			display: flex;
-			
+
+			@media (max-width: 1201px) {
+				display: none;
+				}
 			
 			&__item { 
-			
+				
+				
+
 				&:not(:last-child) {
-					margin: 0 4rem 0 0;
+					margin: 0 3rem 0 0;
 				}
 
 				&--link:link,
-				&--link:active {
+				&--link:visited {
 					text-decoration: none;
 					color: $color-text-light-gray;
 					font-size: 2rem;
 					text-transform: uppercase;
-					text-shadow: $text-shadow-1;
+					// text-shadow: $text-shadow-1;
 					font-weight: 500;
+					display: inline-block;
+					transition: all .2s;
+
+					
 				}
+				
+				&--link:hover {
+					color: $color-green;
+					transform: translateY(-2px);
+				}
+
+				&--link:active,
+				&--link:focus {
+					transform: translateY(0px);
+				}
+
 			}
 		}
 	}
 }
+
+////////// HAMBURGER BUTTON //////////////
+
+
+
+.menu__btn {
+		position: relative;
+		
+		justify-content: center;
+		align-items: center;
+		width: 6rem;
+		height: 6rem;
+		background-color: $color-green;
+		cursor: pointer;
+		transition: all .5s ease-in-out;
+		// border: 1px solid $color-text-light-black;
+		border-radius: 100px;
+
+		display: none;
+
+		@media (max-width: 1200px){
+			display: flex;
+		}
+
+	&__hamburger {
+		width: 3rem;
+		height: 0.5rem;
+		background-color: $color-text-light-gray;
+		border-radius: 5px;
+		transition: all .5s ease-in-out;
+		position: relative;
+
+			&::before,
+			&::after {
+				content: '';
+				position: absolute;
+				width: 3rem;
+				height: 0.5rem;
+				background-color: $color-text-light-gray;
+				display: block;
+				right: 0;
+				border-radius: 5px;
+				transition: all 650ms ease-in-out;
+			}
+
+			&::before {
+				transform: translateY(-1.3rem);
+			}
+
+			&::after {
+				transform: translateY(1.3rem);
+			}
+		}
+	}
+
+	.menu__btn.open .menu__btn__hamburger {
+		transform: translateX(-4rem);
+		background: transparent;
+
+		&::before {
+			transform: rotate(45deg) translate(2.8rem, -2.8rem);
+		}
+
+		&::after {
+			transform: rotate(-45deg) translate(2.8rem, 2.8rem);
+		}
+	}
+
+	
+
+////////////////// MAIN TEXT AREA //////////////////////////
 
 .content {
 	height: 89vh;
 	background: url('../images/background-image.jpg');
 	background-size: cover;
 	box-shadow: inset 0px 20px 20px -10px rgba(82,220,144,0.41);
-	padding-right: 20rem;
+	padding-right: 5rem;
 	padding-left: 5rem;
-
 	display: flex;
+
+	@include respond(tab-land) { // width < 1200?
+		flex-direction: column-reverse;
+		justify-content: space-evenly;
+    }
+
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: space-between;
 
 
 	&__illustration {
 		height: 50rem;
-		margin-right: 20rem;
+		margin-right: 10rem;
+
+		@include respond(tab-land) { // width < 1200?
+			height: 40rem;
+			
+		}
 	}
 
 	&__text-box {
 
-		
+		margin-right: 5rem;
+
+		@include respond(tab-land) { // width < 1200?
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 
 		&__text {
+
+			@include respond(tab-land) { // width < 1200?
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
 
 			&--paragraph1-LP {
 				font-size: 4rem;
@@ -161,10 +313,13 @@ $text-shadow-1: 0px 1px 2px rgba(0,0,0,0.4);
 			}
 
 			&--h1-LP {
-				font-size: 7.5rem;
+				font-size: 6rem;
 				color: $color-text-light-black;
 				font-weight: 500;
 				line-height: 1;
+				&--span {
+					color: rgb(0, 195, 255);
+				}
 			}
 
 			&--paragraph2-LP {
