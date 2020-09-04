@@ -42,7 +42,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.s[ac]ss$/i,
+                test:/\.(s*)css$/,
                 use: [
                   // Creates `style` nodes from JS strings
                   'style-loader',
