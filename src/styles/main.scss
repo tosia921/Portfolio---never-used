@@ -58,6 +58,24 @@ table {
     // }
 }
 
+//////////////////////// ANIMATIONS  ////////////////////////////////////@at-root
+
+@keyframes drop {
+	from {
+	  opacity: 0;
+	  transform: translateY(-50px);
+	}
+	70% {
+		transform: translateY(20px);
+	  animation-timing-function: ease-in;
+	}
+	to {
+	  opacity: 1;
+	  transform: translateY(0px);
+	  animation-timing-function: ease-out;
+	}
+  }
+
 ///////////////////////// RESPONSIVE FONT SIZE //////////////////////////////////
 
 html {
@@ -93,6 +111,7 @@ $main-font: 'Rubik', sans-serif;
 $logo-font: 'Poppins', sans-serif;
 
 $color-green: #52dc90;
+$color-blue: rgb(0, 195, 255);
 $color-light-gray: #fbfbfb;
 
 $color-text-light-gray: rgb(138, 143,163);
@@ -116,21 +135,24 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 }
 
 .header {
-	height: 11vh;
+	height: 8vh;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 
 	z-index: 100;
-	padding-left: 3rem;
-	padding-right: 3rem;
+	padding: 0 10rem;
 	background-color: $color-light-gray;
+
+	@media (max-width: 1201px) {
+		padding: 0 3rem;
+		}
 	&__logo {
 		&--text {
 			font-family: $logo-font;
 			font-weight: 800;
 			text-transform: uppercase;
-			font-size: 3.5rem;
+			font-size: 2.3rem;
 			word-spacing: 10px;
 			color: $color-green;
 			letter-spacing: 1px;
@@ -139,22 +161,32 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 		
 	}
 
-	
-
 	&__nav {
 		
 		&__list {
 			list-style-type: none;
 			display: flex;
 
-			@media (max-width: 1201px) {
-				display: none;
-				}
-			
-			&__item { 
+			@media (max-width: 768px){
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-evenly;
+				height: 40%;
+				position: absolute;
+				top: 8vh;
+				right: 0;
+				background-color: rgba($color-green, 0);
+				padding: 2rem 2rem 1rem 3.5rem;
+				transition: background-color .4s ease-in-out;
 				
-				
+			}
 
+			&.show {
+				background-color: rgba($color-green, 0.7);
+			}
+			
+			&__item {
+				
 				&:not(:last-child) {
 					margin: 0 3rem 0 0;
 				}
@@ -163,19 +195,26 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 				&--link:visited {
 					text-decoration: none;
 					color: $color-text-light-gray;
-					font-size: 2rem;
+					font-size: 1.6rem;
 					text-transform: uppercase;
 					// text-shadow: $text-shadow-1;
 					font-weight: 500;
 					display: inline-block;
-					transition: all .2s;
-
 					
+					@media (max-width: 768px){
+						color: $color-text-light-gray;
+						font-size: 2.3rem;
+						opacity: 0;
+					}	
 				}
 				
 				&--link:hover {
 					color: $color-green;
 					transform: translateY(-2px);
+
+					@media (max-width: 768px){
+						color: $color-light-gray;
+					}
 				}
 
 				&--link:active,
@@ -189,8 +228,6 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 }
 
 ////////// HAMBURGER BUTTON //////////////
-
-
 
 .menu__btn {
 		position: relative;
@@ -207,7 +244,7 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 
 		display: none;
 
-		@media (max-width: 1200px){
+		@media (max-width: 768px){
 			display: flex;
 		}
 
@@ -260,7 +297,7 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 ////////////////// MAIN TEXT AREA //////////////////////////
 
 .content {
-	height: 89vh;
+	height: 92vh;
 	background: url('../images/background-image.jpg');
 	background-size: cover;
 	box-shadow: inset 0px 20px 20px -10px rgba(82,220,144,0.41);
@@ -274,15 +311,19 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
     }
 
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-evenly;
 
 
 	&__illustration {
-		height: 50rem;
+		height: 40rem;
 		margin-right: 10rem;
 
+		// @media (max-width: 1350px){
+		// 	height: 40rem;
+		// }
+
 		@include respond(tab-land) { // width < 1200?
-			height: 40rem;
+			height: 35rem;
 			
 		}
 	}
@@ -318,7 +359,7 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 				font-weight: 500;
 				line-height: 1;
 				&--span {
-					color: rgb(0, 195, 255);
+					color: $color-blue;
 				}
 			}
 
