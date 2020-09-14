@@ -1,6 +1,6 @@
 /////////////////////////// GLOBAL STYLE RESET /////////////////////////////
 
-html, body, div, span, applet, object, iframe,
+*, html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -44,6 +44,10 @@ table {
 ////////////////////////////// MIXINS /////////////////////////////////////
 
 @mixin respond($breakpoint) {
+	@if $breakpoint == small-phone {
+        @media only screen and (max-width: 20em) { @content };    //360px
+    }
+
     @if $breakpoint == phone {
         @media only screen and (max-width: 37.5em) { @content };    //600px
     }
@@ -81,18 +85,22 @@ table {
 html {
     // This defines what 1rem is
 	font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+	@include respond(big-desktop) {
+        font-size: 75%; //1rem = 12, 12/16
+    }
 	
 	@include respond(tab-land) { // width < 1200?
         font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
     }
 
-    @include respond(tab-port) { // width < 900?
-        font-size: 50%; //1 rem = 8px, 8/16 = 50%
+	@include respond(tab-port) { // width < 900?
+        font-size: 45%; //1 rem = 8px, 8/16 = 50%
     }
-    
-    @include respond(big-desktop) {
-        font-size: 75%; //1rem = 12, 12/16
-    }
+
+	@include respond(small-phone) { // width < 360?
+        font-size: 37.5%; //1 rem = 6px, 6/16 = 37.5%
+	}
 }
 
 
@@ -110,6 +118,8 @@ body {
 $main-font: 'Rubik', sans-serif;
 $logo-font: 'Poppins', sans-serif;
 
+$backround-color-white: #f7fefe;
+
 $color-green: #52dc90;
 $color-blue: rgb(0, 195, 255);
 $color-light-gray: #fbfbfb;
@@ -121,11 +131,47 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 
 /////////////////////////////// BUTTON //////////////////////////////////
 
-.btn {
+.btn{
 	background-color: white;
-	border: solid 1px black;
+	font-family: rubik, sans-serif;
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 1px;
+	color: $color-light-gray;
+	border: none;
 	padding: 1rem 2rem;
 	border-radius: 100px;
+	box-shadow: 3px 3px 10px rgba(black, 0.5);
+	width: 15rem;
+	height: 4.5rem;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	transition-property: transform, box-shadow;
+	&:not(:last-child) {
+		margin-right: 4rem;
+	}
+
+				
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 5px 5px 15px rgba(black, 0.5);
+	}
+
+	&:active,
+	&:focus {
+		outline: none;
+		transform: translateY(2px);	
+		box-shadow: 5px 5px 10px rgba(black, 0.5);
+	}
+
+}
+
+.btn-green {
+	background-color: $color-green;
+}
+.btn-blue {
+	background-color: $color-blue;
 }
 
 /////////////////////////////// LANDING PAGE //////////////////////////////////
@@ -152,11 +198,12 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 			font-family: $logo-font;
 			font-weight: 800;
 			text-transform: uppercase;
-			font-size: 2.3rem;
+			font-size: 2.5rem;
 			word-spacing: 10px;
 			color: $color-green;
 			letter-spacing: 1px;
 			text-shadow: $text-shadow-logo;
+			cursor: pointer;
 		}
 		
 	}
@@ -182,7 +229,7 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 			}
 
 			&.show {
-				background-color: rgba($color-green, 0.7);
+				background-color: rgba($color-green, 0.9);
 			}
 			
 			&__item {
@@ -234,8 +281,8 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 		
 		justify-content: center;
 		align-items: center;
-		width: 6rem;
-		height: 6rem;
+		width: 5rem;
+		height: 5rem;
 		background-color: $color-green;
 		cursor: pointer;
 		transition: all .5s ease-in-out;
@@ -249,8 +296,8 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 		}
 
 	&__hamburger {
-		width: 3rem;
-		height: 0.5rem;
+		width: 2rem;
+		height: 0.3rem;
 		background-color: $color-text-light-gray;
 		border-radius: 5px;
 		transition: all .5s ease-in-out;
@@ -260,8 +307,8 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 			&::after {
 				content: '';
 				position: absolute;
-				width: 3rem;
-				height: 0.5rem;
+				width: 2rem;
+				height: 0.3rem;
 				background-color: $color-text-light-gray;
 				display: block;
 				right: 0;
@@ -270,11 +317,11 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 			}
 
 			&::before {
-				transform: translateY(-1.3rem);
+				transform: translateY(-1rem);
 			}
 
 			&::after {
-				transform: translateY(1.3rem);
+				transform: translateY(1rem);
 			}
 		}
 	}
@@ -298,12 +345,20 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 
 .content {
 	height: 92vh;
-	background: url('../images/background-image.jpg');
-	background-size: cover;
+	background-color: $backround-color-white;
+	background-image: url(../images/bottom-right-ring.png), url(../images/top-left-ring.png), url(../images/smallest-blue-ring.png), url(../images/small-blue-ring.png), url(../images/small-green-ring.png), url(../images/small-green-ring.png);
+	background-position: 100% 125%, left top, 90% 20%, 65% 3%, 5% 40%, 20% 90%;
+    background-repeat: no-repeat;
+	background-size: 25rem, 25rem, 10rem, 12rem, 8rem, 8rem;
 	box-shadow: inset 0px 20px 20px -10px rgba(82,220,144,0.41);
 	padding-right: 5rem;
 	padding-left: 5rem;
 	display: flex;
+
+	@media (max-width: 768px){
+		background-position: 100% 105%, left top, 75% 100%, 95% 80%, 5% 13%, 20% 5%;
+		background-size: 10rem, 10rem, 7rem, 7rem, 8rem, 6rem;
+	}
 
 	@include respond(tab-land) { // width < 1200?
 		flex-direction: column-reverse;
@@ -313,24 +368,27 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 	align-items: center;
 	justify-content: space-evenly;
 
-
 	&__illustration {
 		height: 40rem;
 		margin-right: 10rem;
 
-		// @media (max-width: 1350px){
-		// 	height: 40rem;
-		// }
-
 		@include respond(tab-land) { // width < 1200?
 			height: 35rem;
-			
+		}
+		@media (max-width: 768px){
+			margin-right: 0rem;
 		}
 	}
 
 	&__text-box {
 
+		display: flex;
+		flex-direction: column;
 		margin-right: 5rem;
+
+		@media (max-width: 768px){
+			margin-right: 0rem;
+		}
 
 		@include respond(tab-land) { // width < 1200?
 			display: flex;
@@ -354,12 +412,22 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 			}
 
 			&--h1-LP {
+				display: flex;
+				@media (max-width: 500px){
+					flex-direction: column;
+					align-items: center;
+				}
 				font-size: 6rem;
 				color: $color-text-light-black;
 				font-weight: 500;
 				line-height: 1;
 				&--span {
 					color: $color-blue;
+					margin-left: 2rem;
+					@media (max-width: 500px){
+						margin-top: 1rem;
+						font-size: 7rem;
+					}
 				}
 			}
 
@@ -367,6 +435,74 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 				color: $color-text-light-gray;
 				font-size: 2.5rem;
 				margin-top:3rem;
+			}
+		}
+
+		&__buttons {
+			margin-top: 4rem;
+		}
+	}
+}
+
+
+
+/////////////////////////// ABOUT ME SECTION //////////////////////////////////
+
+.aboutMe {
+	background-color: $backround-color-white;
+	height: 100vh;
+	background-image: url(../images/aboutMe-backgroundTopRight.png), url(../images/aboutMe-backgroundBottomLeft.png);
+	background-position: top right, bottom left;
+    background-repeat: no-repeat;
+	background-size: 20rem, 20rem;
+
+	display: flex;
+	justify-content: center;
+	
+	&__contentBox {
+		display: flex;
+		align-self: center;
+
+		// @media (max-width: 768px){
+		// 	flex-direction: column;
+		// }
+		&__image {
+			height: 40rem;
+			width: 50rem;
+			border: 2rem solid $color-blue;
+			border-radius: 4%;
+			box-sizing: border-box;
+			box-shadow: -15px 15px 15px rgba($color-green, 0.6);
+			margin-right: 5rem;
+			background-image: url(../images/MyPhoto.jpg);
+			background-position-x:25%;
+			background-position-y: 40%;
+		}
+
+		&__text {
+			height: 45rem;
+			width: 50rem;
+			font-family: rubik;
+			
+			display: flex;
+			flex-direction: column;
+
+
+			&--intro {
+				font-size: 5rem;
+				line-height: 1.2;
+				font-weight: 500;
+				color: $color-blue;
+				padding-bottom: 3rem;
+			}
+			&--title {
+				font-size: 2.5rem;
+				font-weight: 500;
+				padding-bottom: 2rem;
+			}
+			&--content {
+				font-size: 1.6rem;
+				color: $color-text-light-gray;
 			}
 		}
 	}
