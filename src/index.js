@@ -1,6 +1,12 @@
 import './styles/main.scss';
 
-//Functions to select element/element's
+// // import Swiper JS
+// import swiper from 'swiper/bundle';
+// // import Swiper styles
+// import 'swiper/swiper-bundle.css';
+
+
+
 
 const selectElement = (element) => document.querySelector(element);
 const selectAllElements = (element) => document.querySelectorAll(element);
@@ -21,3 +27,26 @@ selectElement('.menu__btn').addEventListener('click', () => {
         }
     });
 });
+
+
+var mySwiper = new Swiper('.swiper-container', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    keyboard: {
+        enabled: true,
+    },
+    coverflowEffect: {
+      rotate: 20,
+      stretch: 0,
+      depth: 200,
+      modifier: 1,
+      slideShadows: true,
+    },
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  })

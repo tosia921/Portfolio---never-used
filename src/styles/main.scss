@@ -131,6 +131,12 @@ $text-shadow-logo: 0px 2px 4px rgba(0,0,0,0.4);
 $text-shadow-titles: -2px 1px 2px rgba(150, 150, 150, 1);
 $text-shadow-light: -2px 1px 2px rgba(150, 150, 150, 0.5);
 
+$box-shadow: 9px 10px 22px -8px rgba(0,0,0,0.68);
+
+$color-background-form: #f0f0f0;
+
+
+
 /////////////////////////////// BUTTON //////////////////////////////////
 
 .btn{
@@ -367,7 +373,10 @@ $text-shadow-light: -2px 1px 2px rgba(150, 150, 150, 0.5);
 	@include respond(tab-land) { // width < 1200?
 		flex-direction: column-reverse;
 		justify-content: space-evenly;
-    }
+	}
+	@media (max-width: 800px){
+		height: 80vh;
+	}
 
 	align-items: center;
 	justify-content: space-evenly;
@@ -462,49 +471,88 @@ $text-shadow-light: -2px 1px 2px rgba(150, 150, 150, 0.5);
     background-repeat: no-repeat;
 	background-size: 20rem, 20rem;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 5rem 0;
+	height: 100vh;
+	@media (max-width: 1024px){
+		height: auto;
+		background-size: 11rem, 11rem;
+	}
 	
 	&__contentBox {
-		display: flex;
-		align-self: center;
-
-		@include respond(tab-land) { // width < 1200?
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
+		padding: 10rem 5rem 5rem 5rem;
+		display: grid;
+		// grid-template-columns: repeat(2, fit-content(1fr));
+		grid-template-rows: repeat(2, 1fr);
+  		grid-gap: 2rem;
+		align-items: start;
+		justify-items: center;
+		grid-template-areas: 
+			"image aboutme"
+			"tech tech";
+		grid-auto-columns: minmax(320px, 1fr);
+		
+		@media (max-width: 1024px){
+			padding: 5rem;
 		}
-		// @media (max-width: 768px){
-		// 	margin-right: 0rem;
-		// }
+
+		@media (max-width: 800px){
+			padding: 0;
+			grid-auto-columns: minmax(320px, 1fr);
+			grid-template-rows: 30rem, fit-content(repeat(2, 1fr));
+			align-items: center;
+			justify-items: center;
+			grid-template-areas: 
+				"image " 
+				"aboutme "
+				"tech" ;
+		}
+		
 		&__image {
-			height: 40rem;
-			width: 50rem;
+			grid-area: image;
+		    height: 40rem;
+			width: 40rem;
 			border: 2rem solid $color-blue;
 			border-radius: 4%;
 			box-sizing: border-box;
 			box-shadow: -15px 15px 15px rgba($color-green, 0.6);
-			margin-right: 5rem;
 			background-image: url(../images/MyPhoto.jpg);
 			background-position-x:25%;
 			background-position-y: 40%;
-			@include respond(tab-land) { // width < 1200?
+			margin-right: 3rem;
+
+			@media (min-width: 1200px){
+				justify-self: end;
+			}
+			@media (max-width: 1000px){
+				margin-right: 0;
+				justify-self: center;
+				height: 40rem;
+			    width: 40rem;
+			}
+			@media (max-width: 800px){
 				height: 35rem;
 				width: 45rem;
+				margin-right: 0rem;
 				
 			}
+
 		}
 
 		&__text {
+			grid-area: aboutme;
 			height: 45rem;
 			width: 50rem;
 			font-family: rubik;
-			
-			display: flex;
-			flex-direction: column;
+			margin-left: 3rem;
+			@media (min-width: 1200px){
+				justify-self: start;
+			}
+			@media (max-width: 1000px){
+				margin-left: 0;
+			}
+			@media (max-width: 800px){
+				text-align: center;
+
+			}
 
 
 			&--intro {
@@ -526,91 +574,404 @@ $text-shadow-light: -2px 1px 2px rgba(150, 150, 150, 0.5);
 				color: $color-text-light-gray;
 			}
 		}
-	}
 
-	&__technologies {
+		&__technologies {
 		
-		display: flex;
-		flex-direction: column;
-		justify-items: center;
-		align-items: center;
-
-
-		&__title {
-			font-size: 6rem;
-			color: $color-green;
-			font-weight: 500;
-			text-shadow: $text-shadow-titles;
-			margin-bottom: 2rem;
-
-		}
-
-		&__images {
-			width: 50vw;
 			display: flex;
+			flex-direction: column;
+			justify-items: center;
 			align-items: center;
-			justify-content: space-evenly;
-			flex-wrap: wrap;
-			
-			&--html5 {
-				height: 10rem;
-				width: 10rem;
-				background: url(../images/icons/html5.png) no-repeat;
-				background-size: contain;
+	
+			grid-area: tech;
+			align-self: start;
+
+			@media (max-width: 800px){
+				text-align: center;
+				line-height: 1.2;
+
 			}
-			&--css3 {
-				height: 11.5rem;
-				width: 11.5rem;
-				background: url(../images/icons/css3.png) no-repeat;
-				background-size: contain;
+	
+	
+			&__title {
+				font-size: 6rem;
+				color: $color-green;
+				font-weight: 500;
+				text-shadow: $text-shadow-titles;
+				margin-bottom: 2rem;
+	
 			}
-			&--js {
-				height: 8rem;
-				width: 8rem;
-				background: url(../images/icons/javascript.png) no-repeat;
-				background-size: contain;
+	
+			&__images {
+				width: 50vw;
+				display: flex;
+				align-items: center;
+				justify-content: space-evenly;
+				flex-wrap: wrap;
+				
+				&--html5 {
+					height: 10rem;
+					width: 10rem;
+					background: url(../images/icons/html5.png) no-repeat;
+					background-size: contain;
+					@media (max-width: 800px){
+						height: 8rem;
+						width: 8rem;
+					}
+				}
+				&--css3 {
+					height: 11.5rem;
+					width: 11.5rem;
+					background: url(../images/icons/css3.png) no-repeat;
+					background-size: contain;
+					@media (max-width: 800px){
+						height: 9rem;
+						width: 9rem;
+					}
+				}
+				&--js {
+					height: 8rem;
+					width: 8rem;
+					background: url(../images/icons/javascript.png) no-repeat;
+					background-size: contain;
+					@media (max-width: 800px){
+						height: 7rem;
+						width: 7rem;
+					}
+				}
+				&--npm {
+					height: 10rem;
+					width: 10rem;
+					margin-left: 2rem;
+					background: url(../images/icons/npm.png) no-repeat;
+					background-size: contain;
+					@media (max-width: 800px){
+						height: 8rem;
+						width: 8rem;
+					}
+				}
+				&--webpack {
+					height: 10rem;
+					width: 10rem;
+					background: url(../images/icons/webpack.png) no-repeat;
+					background-size: contain;
+					@media (max-width: 800px){
+						height: 8rem;
+						width: 8rem;
+					}
+				}
+				&--sass {
+					height: 11rem;
+					width: 11rem;
+					background: url(../images/icons/sass2.png) no-repeat;
+					background-size: contain;
+					margin-top: 2rem;
+					@media (max-width: 800px){
+						height: 8rem;
+						width: 8rem;
+					}
+				}
+				&--git {
+					height: 10rem;
+					width: 10rem;
+					background: url(../images/icons/git2.png) no-repeat;
+					background-size: contain;
+					margin-right: 1rem;
+					@media (max-width: 800px){
+						height: 8rem;
+						width: 8rem;
+					}
+				}
+				&--github {
+					height: 9rem;
+					width: 9rem;
+					background: url(../images/icons/github2.png) no-repeat;
+					background-size: contain;
+					margin-right: 1rem;
+					@media (max-width: 800px){
+						height: 7rem;
+						width: 7rem;
+					}
+				}
+				&--vs {
+					height: 8rem;
+					width: 8rem;
+					background: url(../images/icons/vs.png) no-repeat;
+					background-size: contain;
+					@media (max-width: 800px){
+						height: 6rem;
+						width: 6rem;
+					}
+				}
+				
 			}
-			&--npm {
-				height: 10rem;
-				width: 10rem;
-				margin-left: 2rem;
-				background: url(../images/icons/npm.png) no-repeat;
-				background-size: contain;
-			}
-			&--webpack {
-				height: 10rem;
-				width: 10rem;
-				background: url(../images/icons/webpack.png) no-repeat;
-				background-size: contain;
-			}
-			&--sass {
-				height: 11rem;
-				width: 11rem;
-				background: url(../images/icons/sass2.png) no-repeat;
-				background-size: contain;
-				margin-top: 2rem;
-			}
-			&--git {
-				height: 10rem;
-				width: 10rem;
-				background: url(../images/icons/git2.png) no-repeat;
-				background-size: contain;
-				margin-right: 1rem;
-			}
-			&--github {
-				height: 9rem;
-				width: 9rem;
-				background: url(../images/icons/github2.png) no-repeat;
-				background-size: contain;
-				margin-right: 1rem;
-			}
-			&--vs {
-				height: 8rem;
-				width: 8rem;
-				background: url(../images/icons/vs.png) no-repeat;
-				background-size: contain;
-			}
-			
 		}
 	}
+}
+
+
+
+
+
+
+
+
+//////////////////////////////// SECTION PROJECTS ////////////////////////////////////////////
+
+.projects {
+	height: 100vh;
+	background-color: $backround-color-white;
+	// position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	@media (max-width: 800px){
+		height: auto;
+		padding: 5rem;
+	}
+
+	&__title {
+		font-size: 5rem;
+		font-weight: 500;
+		color: $color-blue;
+		text-shadow: $text-shadow-titles;
+
+	}
+}
+
+.swiper-container {
+	width: 80%;
+	padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+	width: 58rem;
+	height: 45rem;
+	background: greenyellow;
+	
+}
+.swiper-pagination-bullet {
+	height: 15px;
+	width: 15px;
+}
+.slide-1 {
+	background: red;
+}
+.slide-2 {
+	background: blue;
+}
+.slide-3 {
+	background: green;
+}
+.slide-4 {
+	background: yellow;
+}
+
+
+
+
+
+
+
+
+
+//////////////////////////////////// SECTION CODING CHALLENGES //////////////////////////@at-root
+
+.challenges {
+	background-color: $backround-color-white;
+	height: 100vh;
+	padding: 3rem;
+	@media only screen and (max-width: 768px){
+		height: fit-content;
+	}
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	position: relative;
+	
+
+	&__title {
+		font-size: 5rem;
+		font-weight: 500;
+		color: $color-blue;
+		text-shadow: $text-shadow-titles;
+		text-align: center;
+		margin-bottom: 5rem;
+		
+	}
+
+	&__wrapper {
+		
+		display: grid;
+		grid-template-rows: repeat(2, 1fr);
+		grid-auto-columns: auto-fill, minmax(100px, 1fr);
+		grid-gap: 4rem;
+		grid-template-areas: 
+			"box1 box2"
+			"box3 box4";
+		align-items: center;
+		justify-items: center;
+
+		// position: absolute;
+		// top: 50%;
+		// left: 50%;
+		// transform: translate(-50%, -50%);
+		@media only screen and (max-width: 768px){
+			grid-template-rows: repeat(4, 1fr);
+			grid-auto-columns: auto-fill, minmax(100px, 1fr);
+			grid-gap: 2rem;
+			grid-template-areas: 
+			"box1"
+			"box2" 
+		 	"box3"
+			"box4"
+			;
+			// top: 60%;
+			// left: 50%;
+			// transform: translate(-50%, -50%);
+			// padding: 4rem;
+		}
+		@media only screen and (min-width: 1600px){
+			grid-template-rows: repeat(1, 1fr);
+			grid-auto-columns: auto-fill, minmax(100px, 1fr);
+			grid-gap: 2rem;
+			grid-template-areas: 
+			"box1 box2 box3 box4"
+			;
+		}
+		&__box {
+			height:25rem;
+			width:25rem;
+			@media only screen and (max-width: 768px){
+				height:40rem;
+				width:40rem;
+			}
+			@media only screen and (min-width: 1600px){
+				height:40rem;
+				width:40rem;
+			}
+			
+			&--box-1{
+				grid-area: box1;
+				background-color: red;
+				// justify-self: end;
+			}
+			&--box-2{
+				grid-area: box2;
+				// justify-self: start;
+				background-color: beige;
+			}
+			&--box-3{
+				grid-area: box3;
+				// justify-self: end;
+				background-color: black;
+			}
+			&--box-4{
+				grid-area: box4;
+				// justify-self: start;
+				background-color: blueviolet;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+/////////////////////////// SECTION CONTACT ME //////////////////////////////
+
+.contactMe {
+	height: 85vh;
+	// background-image: url(../images/background-2.png);
+	// background-size: cover;
+	padding: 3rem 3rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	&__title {
+		font-size: 5rem;
+		font-weight: 500;
+		color: $color-blue;
+		text-shadow: $text-shadow-titles;
+		text-align: center;
+		margin-bottom: 5rem;
+	}
+
+	&__wrapper {
+		height: 95%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&__image {
+			height: 57rem;
+			width: 67rem;
+			background-image: url(../images/contact-image.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		&__form {
+			height: 100%;
+			width: 50%;
+			
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			align-items: center;
+
+			&__input {
+				width: 60%;
+				background: $color-background-form;
+				outline: none;
+				margin: 2rem 0;
+				padding: 1rem 3rem;
+				font-size: 2rem;
+				color: $color-text-light-gray;
+				box-shadow: $box-shadow;
+				
+				&--name {
+					height: 5rem;
+				}
+
+				&--email {
+					height: 5rem;
+				}
+
+				&--message {
+					height: 25rem;
+					resize: none;
+				}
+			}
+			&--btn {
+				width:70%;
+				height: 6rem;
+				background-color: $color-green;
+				margin: 2rem 0;
+				
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+///////////////////////////// FOOTER //////////////////////////
+
+.footer {
+	height: 10vh;
+	background: $color-green;
 }
