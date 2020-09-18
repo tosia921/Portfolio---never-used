@@ -897,6 +897,7 @@ $color-background-form: #f0f0f0;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	background-color: $backround-color-white;
 
 	&__title {
 		font-size: 5rem;
@@ -913,6 +914,7 @@ $color-background-form: #f0f0f0;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		
 		&__image {
 			height: 57rem;
 			width: 67rem;
@@ -922,13 +924,13 @@ $color-background-form: #f0f0f0;
 		}
 		&__form {
 			height: 100%;
-			width: 50%;
+			width: 40%;
 			
 			display: flex;
 			flex-direction: column;
 			justify-content: space-evenly;
 			align-items: center;
-
+		
 			&__input {
 				width: 60%;
 				background: $color-background-form;
@@ -939,8 +941,10 @@ $color-background-form: #f0f0f0;
 				color: $color-text-light-gray;
 				box-shadow: $box-shadow;
 				
+				
 				&--name {
 					height: 5rem;
+					position: relative;
 				}
 
 				&--email {
@@ -965,13 +969,37 @@ $color-background-form: #f0f0f0;
 
 
 
-
-
-
-
 ///////////////////////////// FOOTER //////////////////////////
 
 .footer {
 	height: 10vh;
 	background: $color-green;
+}
+
+////////////////  contact form validation ////////////////
+
+// input:invalid{
+// 	border-color: #900;
+// 	background-color: #FDD;
+//   }
+
+// input:focus:invalid {
+// 	outline: none;
+//   }
+
+
+
+.nopass {
+	border: 2px solid rgb(177, 74, 74);
+ 	background-color: rgb(255, 196, 196);
+}
+.pass {
+	border: 2px solid $color-green;
+	background-color: rgb(170, 252, 170);
+}
+
+small {
+	border: none;
+	font-size: 1.7rem;
+	color: rgb(189, 63, 63);
 }

@@ -106,11 +106,14 @@
         <div class="contactMe__wrapper__image">
 
         </div>
-        <form class="contactMe__wrapper__form">
-            <input type="text" placeholder="Name" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--name" required>
-            <input type="email" placeholder="E-mail" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--email" required>
-            <textarea name="message" placeholder="Message" rows="10" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--message" required></textarea>
-            <button type="submit" class="contactMe__wrapper__form--btn btn">Send Message</button>
+        <form class="contactMe__wrapper__form" novalidate autocomplete="off" >
+            <input type="text" name="name" placeholder="Name" minlength="5" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--name" required>
+            <small id="nameError"></small>
+            <input type="email" name="email" minlength="8" placeholder="E-mail" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--email" required>
+            <small id="emailError"></small>
+            <textarea name="message" placeholder="Message" rows="10" minlength="10" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--message" required></textarea>
+            <small id="messageError"></small>
+            <button class="contactMe__wrapper__form--btn btn">Send Message</button>
         </form>
     </div>
 
