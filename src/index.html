@@ -8,122 +8,126 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css" integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w==" crossorigin="anonymous" />
+    
 
 </head>
 <body>
-    
-<section id="landing-page">
-    <header class="header">
-        <div class="header__logo">
-            <a class="header__logo--text">Tomasz Posiadala</a>
-        </div>
-        <nav class="header__nav">
-            <ul class="header__nav__list">
-                <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">Home</a></li>
-                <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">About Me</a></li>
-                <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">Projects</a></li>
-                <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">Coding Challenges</a></li>
-                <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="menu__btn">
-            <div class="menu__btn__hamburger"></div>
-        </div>
-    </header>
-    <div class="content">
-        <img class="content__illustration" src="./images/Illustration.png" alt="illustration">
-        <!-- <img class="content__backgroundRings--bigBlue" src="./images/bottom-right-ring.png"> -->
-        <div class="content__text-box">
-            <div class="content__text-box__text">
-                <p class="content__text-box__text--paragraph1-LP">HI I'M</p>
-                <h1 class="content__text-box__text--h1-LP">
-                    <span>Tomasz</span>
-                    <span class="content__text-box__text--h1-LP--span">Posiadala</span>
-                </h1>
-                <p class="content__text-box__text--paragraph2-LP">A Front End Developer</p>
+    <div id="fullpage">  
+        <section class=" section landing-page">
+            <header class="header">
+                <div class="header__logo">
+                    <a class="header__logo--text">Tomasz Posiadala</a>
+                </div>
+                <nav class="header__nav">
+                    <ul class="header__nav__list">
+                        <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">Home</a></li>
+                        <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">About Me</a></li>
+                        <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">Projects</a></li>
+                        <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">Coding Challenges</a></li>
+                        <li class="header__nav__list__item"><a class="header__nav__list__item--link" href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="menu__btn">
+                    <div class="menu__btn__hamburger"></div>
+                </div>
+            </header>
+            <div class="content">
+                <img class="content__illustration" src="./images/Illustration.png" alt="illustration">
+                <!-- <img class="content__backgroundRings--bigBlue" src="./images/bottom-right-ring.png"> -->
+                <div class="content__text-box">
+                    <div class="content__text-box__text">
+                        <p class="content__text-box__text--paragraph1-LP">HI I'M</p>
+                        <h1 class="content__text-box__text--h1-LP">
+                            <span>Tomasz</span>
+                            <span class="content__text-box__text--h1-LP--span">Posiadala</span>
+                        </h1>
+                        <p class="content__text-box__text--paragraph2-LP">A Front End Developer</p>
+                    </div>
+                    <div class="content__text-box__buttons">
+                        <button class="btn btn-green">Projects</button>
+                        <button class="btn btn-blue">Contact</button>
+                    </div>
+                </div>
             </div>
-            <div class="content__text-box__buttons">
-                <button class="btn btn-green">Projects</button>
-                <button class="btn btn-blue">Contact</button>
+        </section>
+        <section class="section aboutMe">
+            <div class="aboutMe__contentBox">
+                <div class="aboutMe__contentBox__image"></div>
+                    <div class="aboutMe__contentBox__text">
+                        <h3 class="aboutMe__contentBox__text--intro">
+                            Hi, Let's Introduce! </br> About Myself
+                        </h3>
+                        <p class="aboutMe__contentBox__text--title">I am Front End / Software Developer</p>
+                        <p class="aboutMe__contentBox__text--content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias voluptatem corrupti rem nobis autem voluptas, recusandae architecto. Voluptatum nesciunt ad porro impedit deleniti ex libero fugiat eos, sint illum soluta rerum totam provident nostrum laboriosam? Maiores quos eveniet doloremque vitae tempora, pariatur ab id nihil impedit repudiandae recusandae laboriosam enim.</p>
+                </div>
+                <div class="aboutMe__contentBox__technologies">
+                    <h3 class="aboutMe__contentBox__technologies__title">Technologies I use:</h3>
+                    <div class="aboutMe__contentBox__technologies__images">
+                        <div class="aboutMe__contentBox__technologies__images--html5"></div>
+                        <div class="aboutMe__contentBox__technologies__images--css3"></div>
+                        <div class="aboutMe__contentBox__technologies__images--js"></div>
+                        <div class="aboutMe__contentBox__technologies__images--npm"></div>
+                        <div class="aboutMe__contentBox__technologies__images--webpack"></div>
+                        <div class="aboutMe__contentBox__technologies__images--sass"></div>
+                        <div class="aboutMe__contentBox__technologies__images--git"></div>
+                        <div class="aboutMe__contentBox__technologies__images--github"></div>
+                        <div class="aboutMe__contentBox__technologies__images--vs"></div>
+                        
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
-<section class="aboutMe">
-    <div class="aboutMe__contentBox">
-        <div class="aboutMe__contentBox__image"></div>
-            <div class="aboutMe__contentBox__text">
-                <h3 class="aboutMe__contentBox__text--intro">
-                    Hi, Let's Introduce! </br> About Myself
-                </h3>
-                <p class="aboutMe__contentBox__text--title">I am Front End / Software Developer</p>
-                <p class="aboutMe__contentBox__text--content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias voluptatem corrupti rem nobis autem voluptas, recusandae architecto. Voluptatum nesciunt ad porro impedit deleniti ex libero fugiat eos, sint illum soluta rerum totam provident nostrum laboriosam? Maiores quos eveniet doloremque vitae tempora, pariatur ab id nihil impedit repudiandae recusandae laboriosam enim.</p>
-        </div>
-        <div class="aboutMe__contentBox__technologies">
-            <h3 class="aboutMe__contentBox__technologies__title">Technologies I use:</h3>
-            <div class="aboutMe__contentBox__technologies__images">
-                <div class="aboutMe__contentBox__technologies__images--html5"></div>
-                <div class="aboutMe__contentBox__technologies__images--css3"></div>
-                <div class="aboutMe__contentBox__technologies__images--js"></div>
-                <div class="aboutMe__contentBox__technologies__images--npm"></div>
-                <div class="aboutMe__contentBox__technologies__images--webpack"></div>
-                <div class="aboutMe__contentBox__technologies__images--sass"></div>
-                <div class="aboutMe__contentBox__technologies__images--git"></div>
-                <div class="aboutMe__contentBox__technologies__images--github"></div>
-                <div class="aboutMe__contentBox__technologies__images--vs"></div>
-                
+            
+        </section>
+        <section class="section projects">
+            <h3 class="projects__title">My Latest Works</h3>
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                <div class="swiper-slide slide-1"></div>
+                <div class="swiper-slide slide-2"></div>
+                <div class="swiper-slide slide-3"></div>
+                <div class="swiper-slide slide-4"></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
             </div>
-        </div>
-    </div>
-    
-</section>
-<section class="projects">
-    <div class="textContainer"><h3 class="projects__title">My Latest Works</h3></div>
+        </section>
+        <section class="section challenges">
+            <h2 class="challenges__title">Coding Challenges:</h2>
+            <div class="challenges__wrapper">
+                <div class="challenges__wrapper__box challenges__wrapper__box--box-1"></div>
+                <div class="challenges__wrapper__box challenges__wrapper__box--box-2"></div>
+                <div class="challenges__wrapper__box challenges__wrapper__box--box-3"></div>
+                <div class="challenges__wrapper__box challenges__wrapper__box--box-4"></div>
+            </div>
+        </section>
+        <section class="section contactMe">
+            <h2 class="contactMe__title">Get In Touch</h2>
+            <div class="contactMe__wrapper">
+                <div class="contactMe__wrapper__image">
 
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide slide-1"></div>
-          <div class="swiper-slide slide-2"></div>
-          <div class="swiper-slide slide-3"></div>
-          <div class="swiper-slide slide-4"></div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
-</section>
-<section class="challenges">
-    <h2 class="challenges__title">Coding Challenges:</h2>
-    <div class="challenges__wrapper">
-        <div class="challenges__wrapper__box challenges__wrapper__box--box-1"></div>
-        <div class="challenges__wrapper__box challenges__wrapper__box--box-2"></div>
-        <div class="challenges__wrapper__box challenges__wrapper__box--box-3"></div>
-        <div class="challenges__wrapper__box challenges__wrapper__box--box-4"></div>
-    </div>
-</section>
-<section class="contactMe">
-    <h2 class="contactMe__title">Get In Touch</h2>
-    <div class="contactMe__wrapper">
-        <div class="contactMe__wrapper__image">
+                </div>
+                <form class="contactMe__wrapper__form" novalidate autocomplete="off" >
+                    <input type="text" name="name" placeholder="Name" minlength="5" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--name" required>
+                    <small id="nameError"></small>
+                    <input type="email" name="email" minlength="8" placeholder="E-mail" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--email" required>
+                    <small id="emailError"></small>
+                    <textarea name="message" placeholder="Message" rows="10" minlength="10" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--message" required></textarea>
+                    <small id="messageError"></small>
+                    <button class="contactMe__wrapper__form--btn btn">Send Message</button>
+                </form>
+            </div>
 
-        </div>
-        <form class="contactMe__wrapper__form" novalidate autocomplete="off" >
-            <input type="text" name="name" placeholder="Name" minlength="5" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--name" required>
-            <small id="nameError"></small>
-            <input type="email" name="email" minlength="8" placeholder="E-mail" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--email" required>
-            <small id="emailError"></small>
-            <textarea name="message" placeholder="Message" rows="10" minlength="10" class="contactMe__wrapper__form__input contactMe__wrapper__form__input--message" required></textarea>
-            <small id="messageError"></small>
-            <button class="contactMe__wrapper__form--btn btn">Send Message</button>
-        </form>
-    </div>
+        </section>
+    </div> 
 
-</section>
+<!-- <footer class="footer"></footer> -->
 
-<footer class="footer"></footer>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js" integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw==" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 </body>
 </html>
 

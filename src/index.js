@@ -1,13 +1,5 @@
 import './styles/main.scss';
 
-// // import Swiper JS
-// import swiper from 'swiper/bundle';
-// // import Swiper styles
-// import 'swiper/swiper-bundle.css';
-
-
-
-
 const selectElement = (element) => document.querySelector(element);
 const selectAllElements = (element) => document.querySelectorAll(element);
 
@@ -147,6 +139,18 @@ function showErrorMessage () {
 }
 
 
+///////////////// FULL PAGE JS //////////////////////
+
+
+new fullpage('#fullpage', {
+    //options here
+    responsiveWidth: 900,
+    autoScrolling:true,
+    navigation: true,
+    navigationTooltips: false,
+    navigationTooltips: ['Home', 'About', 'Projects', 'Challenges', 'Contact'],
+    showActiveTooltip: false,
+});
 
 
 
@@ -158,39 +162,6 @@ function showErrorMessage () {
 
 
 
-
-
-
-
-
-
-
-
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault();
-
-//     checkInputs();
-// });
-
-// function checkInputs () {
-//     // get the values from the inputs
-//     const nameValue = name.value.trim();
-//     const emailValue = email.value.trim();
-//     const messageValue = message.value.trim();
-
-//     if(nameValue === '') {
-//         //show eror
-//         //add error class
-//         setErrorFor(username, "Name cannot be blank")
-//     } else {
-//         //add success class
-//     }
-
-// }
-
-// function setErrorFor(input, message) {
-
-// }
 
 
 

@@ -188,6 +188,9 @@ $color-background-form: #f0f0f0;
 .landing-page {
 	height: 100vh;
 }
+@media (max-width: 768px){
+	height: fit-content;
+}
 
 .header {
 	height: 8vh;
@@ -374,9 +377,6 @@ $color-background-form: #f0f0f0;
 		flex-direction: column-reverse;
 		justify-content: space-evenly;
 	}
-	@media (max-width: 800px){
-		height: 80vh;
-	}
 
 	align-items: center;
 	justify-content: space-evenly;
@@ -390,6 +390,11 @@ $color-background-form: #f0f0f0;
 		}
 		@media (max-width: 768px){
 			margin-right: 0rem;
+		}
+		@media (max-width: 660px){
+			margin-top: 4rem;
+			margin-bottom: 4rem;
+			margin-right: 0;
 		}
 	}
 
@@ -464,40 +469,46 @@ $color-background-form: #f0f0f0;
 /////////////////////////// ABOUT ME SECTION //////////////////////////////////
 
 .aboutMe {
-	background-color: $backround-color-white;
-	height: 100vh;
-	background-image: url(../images/aboutMe-backgroundTopRight.png), url(../images/aboutMe-backgroundBottomLeft.png);
+	// background-color: $backround-color-white;
+	// background: rgb(23,221,106);
+   
+	min-height: 100vh;
+	background-image: url(../images/aboutMe-backgroundTopRight.png), url(../images/aboutMe-backgroundBottomLeft.png), linear-gradient(176deg, rgba(23,221,106,0.25) 0%, rgba(0,247,211, 0.1) 100%);
 	background-position: top right, bottom left;
     background-repeat: no-repeat;
-	background-size: 20rem, 20rem;
+	background-size: 20rem, 20rem, cover;
+	
 
-	height: 100vh;
 	@media (max-width: 1024px){
 		height: auto;
-		background-size: 11rem, 11rem;
+		background-size: 11rem, 11rem, cover;
+		padding: 5rem 2rem;
+		
 	}
 	
 	&__contentBox {
-		padding: 10rem 5rem 5rem 5rem;
+		margin: 5rem;
+		// padding: 10rem 5rem 5rem 5rem;
 		display: grid;
 		// grid-template-columns: repeat(2, fit-content(1fr));
-		grid-template-rows: repeat(2, 1fr);
-  		grid-gap: 2rem;
+		grid-template-rows: repeat(2, 40rem);
+  		// grid-gap: 2rem;
 		align-items: start;
 		justify-items: center;
 		grid-template-areas: 
 			"image aboutme"
 			"tech tech";
-		grid-auto-columns: minmax(320px, 1fr);
+		grid-auto-columns: minmax(200px,1fr);
 		
 		@media (max-width: 1024px){
-			padding: 5rem;
+			padding: 2rem;
 		}
 
-		@media (max-width: 800px){
+		@media (max-width: 900px){
+			
 			padding: 0;
-			grid-auto-columns: minmax(320px, 1fr);
-			grid-template-rows: 30rem, fit-content(repeat(2, 1fr));
+			// grid-auto-columns: minmax(200px, 1fr);
+			// grid-template-rows: 30rem, fit-content(repeat(2, 0.5fr));
 			align-items: center;
 			justify-items: center;
 			grid-template-areas: 
@@ -525,13 +536,14 @@ $color-background-form: #f0f0f0;
 			@media (max-width: 1000px){
 				margin-right: 0;
 				justify-self: center;
-				height: 40rem;
-			    width: 40rem;
+				height: 35rem;
+			    width: 35rem;
 			}
 			@media (max-width: 800px){
-				height: 35rem;
-				width: 45rem;
+				height: 30rem;
+				width: 35rem;
 				margin-right: 0rem;
+				margin-bottom: 3rem;
 				
 			}
 
@@ -539,10 +551,12 @@ $color-background-form: #f0f0f0;
 
 		&__text {
 			grid-area: aboutme;
-			height: 45rem;
+			height: 40rem;
 			width: 50rem;
 			font-family: rubik;
 			margin-left: 3rem;
+			
+			
 			@media (min-width: 1200px){
 				justify-self: start;
 			}
@@ -551,6 +565,9 @@ $color-background-form: #f0f0f0;
 			}
 			@media (max-width: 800px){
 				text-align: center;
+				margin: 5rem 8rem;
+				width: 90vw;
+				height: fit-content ;
 
 			}
 
@@ -584,6 +601,7 @@ $color-background-form: #f0f0f0;
 	
 			grid-area: tech;
 			align-self: start;
+			margin-top: 2rem;
 
 			@media (max-width: 800px){
 				text-align: center;
@@ -660,11 +678,11 @@ $color-background-form: #f0f0f0;
 					}
 				}
 				&--sass {
-					height: 11rem;
-					width: 11rem;
-					background: url(../images/icons/sass2.png) no-repeat;
+					height: 9rem;
+					width: 9rem;
+					background: url(../images/icons/sass.png) no-repeat;
 					background-size: contain;
-					margin-top: 2rem;
+					margin-right: 1rem;
 					@media (max-width: 800px){
 						height: 8rem;
 						width: 8rem;
@@ -718,31 +736,28 @@ $color-background-form: #f0f0f0;
 //////////////////////////////// SECTION PROJECTS ////////////////////////////////////////////
 
 .projects {
-	height: 100vh;
-	background-color: $backround-color-white;
+	
+	// background-color: $backround-color-white;
 	// position: relative;
+	background-image: url(../images/background-2.png);
+	background-size: cover;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	@media (max-width: 800px){
-		height: auto;
-		padding: 5rem;
-	}
+	justify-content: space-evenly;
 
 	&__title {
 		font-size: 5rem;
 		font-weight: 500;
 		color: $color-blue;
 		text-shadow: $text-shadow-titles;
-
+		text-align: center;
 	}
 }
 
+
 .swiper-container {
 	width: 80%;
-	padding-top: 50px;
-    padding-bottom: 50px;
+	padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 .swiper-slide {
@@ -778,11 +793,13 @@ $color-background-form: #f0f0f0;
 
 //////////////////////////////////// SECTION CODING CHALLENGES //////////////////////////@at-root
 
+// copia .challenges
+
 .challenges {
 	background-color: $backround-color-white;
 	height: 100vh;
-	padding: 3rem;
-	@media only screen and (max-width: 768px){
+	padding: 1rem;
+	@media only screen and (max-width: 899px){
 		height: fit-content;
 	}
 	display: flex;
@@ -806,12 +823,12 @@ $color-background-form: #f0f0f0;
 	&__wrapper {
 		
 		display: grid;
-		grid-template-rows: repeat(2, 1fr);
-		grid-auto-columns: auto-fill, minmax(100px, 1fr);
-		grid-gap: 4rem;
+		// grid-template-rows: repeat(2, 1fr);
+		// grid-auto-columns: auto-fill, minmax(100px, 1fr);
+		grid-gap: 2rem;
 		grid-template-areas: 
-			"box1 box2"
-			"box3 box4";
+			"box1 box2 box3 box4"
+			;
 		align-items: center;
 		justify-items: center;
 
@@ -819,6 +836,12 @@ $color-background-form: #f0f0f0;
 		// top: 50%;
 		// left: 50%;
 		// transform: translate(-50%, -50%);
+		@media only screen and (max-width: 1200px){
+		grid-template-areas: 
+			"box1 box2" 
+			"box3 box4"
+			;
+		}
 		@media only screen and (max-width: 768px){
 			grid-template-rows: repeat(4, 1fr);
 			grid-auto-columns: auto-fill, minmax(100px, 1fr);
@@ -857,21 +880,43 @@ $color-background-form: #f0f0f0;
 			&--box-1{
 				grid-area: box1;
 				background-color: red;
-				// justify-self: end;
+				@media screen and (max-width: 1200px) {
+					justify-self: end;
+				}
+				@media screen and (max-width: 768px) {
+					justify-self: center;
+				}
+				
+				
 			}
 			&--box-2{
 				grid-area: box2;
-				// justify-self: start;
+				@media screen and (max-width: 1200px) {
+					justify-self: start;
+				}
+				@media screen and (max-width: 768px) {
+					justify-self: center;
+				}
 				background-color: beige;
 			}
 			&--box-3{
 				grid-area: box3;
-				// justify-self: end;
+				@media screen and (max-width: 1200px) {
+					justify-self: end;
+				}
+				@media screen and (max-width: 768px) {
+					justify-self: center;
+				}
 				background-color: black;
 			}
 			&--box-4{
 				grid-area: box4;
-				// justify-self: start;
+				@media screen and (max-width: 1200px) {
+					justify-self: start;
+				}
+				@media screen and (max-width: 768px) {
+					justify-self: center;
+				}
 				background-color: blueviolet;
 			}
 		}
@@ -890,6 +935,9 @@ $color-background-form: #f0f0f0;
 
 .contactMe {
 	height: 85vh;
+	@media only screen and (max-width: 899px){
+		height: fit-content;
+	}
 	// background-image: url(../images/background-2.png);
 	// background-size: cover;
 	padding: 3rem 3rem;
@@ -905,15 +953,19 @@ $color-background-form: #f0f0f0;
 		color: $color-blue;
 		text-shadow: $text-shadow-titles;
 		text-align: center;
-		margin-bottom: 5rem;
+		margin-top: 3rem;
+		
 	}
 
 	&__wrapper {
-		height: 95%;
-		width: 100%;
+		width: 90vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
+		@media only screen and (max-width: 660px){
+			height: 70%;
+		}
 		
 		&__image {
 			height: 57rem;
@@ -921,18 +973,32 @@ $color-background-form: #f0f0f0;
 			background-image: url(../images/contact-image.png);
 			background-repeat: no-repeat;
 			background-size: contain;
+			margin-top: 3rem;
+
+			@media only screen and (max-width: 1200px){
+				height:50rem;
+				width:60rem;
+			}
+			@media only screen and (max-width: 660px){
+				display: none;
+			}
 		}
 		&__form {
-			height: 100%;
-			width: 40%;
+			height: 60rem;
+			width: 50rem;
 			
+			margin: 5rem 5rem 5rem 10rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-evenly;
 			align-items: center;
+
+			@media only screen and (max-width: 660px){
+				margin: 5rem 5rem;
+			}
 		
 			&__input {
-				width: 60%;
+				width: 100%;
 				background: $color-background-form;
 				outline: none;
 				margin: 2rem 0;
@@ -957,7 +1023,7 @@ $color-background-form: #f0f0f0;
 				}
 			}
 			&--btn {
-				width:70%;
+				width:100%;
 				height: 6rem;
 				background-color: $color-green;
 				margin: 2rem 0;
@@ -969,37 +1035,7 @@ $color-background-form: #f0f0f0;
 
 
 
-///////////////////////////// FOOTER //////////////////////////
-
-.footer {
-	height: 10vh;
-	background: $color-green;
-}
-
-////////////////  contact form validation ////////////////
-
-// input:invalid{
-// 	border-color: #900;
-// 	background-color: #FDD;
-//   }
-
-// input:focus:invalid {
-// 	outline: none;
-//   }
-
-
-
-.nopass {
-	border: 2px solid rgb(177, 74, 74);
- 	background-color: rgb(255, 196, 196);
-}
-.pass {
-	border: 2px solid $color-green;
-	background-color: rgb(170, 252, 170);
-}
-
-small {
-	border: none;
-	font-size: 1.7rem;
-	color: rgb(189, 63, 63);
+///////////////////////////// FOOTER /////////////////////
+#fp-nav ul li a span {
+	background: $color-blue;
 }
